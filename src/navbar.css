@@ -1,0 +1,40 @@
+@import url("https://fonts.googleapis.com/css2?family=Orbitron&display=swap");
+
+.navbar {
+  font-family: "Orbitron", sans-serif;
+  font-size: 22px;
+  width: 100%;
+  background-color: #03071e;
+  background-image: none;
+  border-bottom: 1px solid #f48c06;
+  display: flex;
+  justify-content: space-between;
+}
+
+.menu {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  width: 50%;
+  display: flex;
+  color: white;
+  background-image: none;
+}
+
+.option {
+  letter-spacing: 2px;
+  transition: all 0.2s ease;
+}
+
+.option:hover {
+  color: #f48c06;
+  cursor: pointer;
+}
+
+#logo {
+  cursor: pointer;
+  width: 200px;
+  height: 150px;
+  margin-left: 40px;
+  margin-top: 4px;
+}
