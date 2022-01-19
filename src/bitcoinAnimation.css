@@ -1,0 +1,22 @@
+img {
+  width: 45vw;
+  margin-top: 100px;
+}
+
+.bitcoin-animation {
+  text-align: right;
+}
+
+.fade-in-right {
+  animation: fade-in-right 3s ease;
+}
+@keyframes fade-in-right {
+  0% {
+    opacity: 0;
+    transform: translateX(800px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
