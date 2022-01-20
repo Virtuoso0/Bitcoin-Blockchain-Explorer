@@ -40,6 +40,7 @@ const Option = styled.div`
   letter-spacing: 2px;
   transition: all 0.2s ease;
   &:hover {
+    transform: scale(0.95);
     color: #f48c06;
     cursor: pointer;
   }
@@ -50,7 +51,11 @@ const LogoImg = styled.img`
   height: 150px;
   margin-left: 40px;
   margin-top: 4px;
+  transition: all 0.2s ease;
   cursor: pointer;
+  &:hover {
+    transform: scale(0.95);
+  }
 `;
 
 export default Navbar;
