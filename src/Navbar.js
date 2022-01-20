@@ -5,14 +5,14 @@ const Navbar = () => {
   return (
     <div className="navbar">
       <Style>
-        <div className="logo-container">
+        <header>
           <LogoImg src={logo} alt="logo" />
-        </div>
-        <Menu>
+        </header>
+        <Nav>
           <Option>Bitcoin</Option>
           <Option>Blocks</Option>
           <Option>Contact us</Option>
-        </Menu>
+        </Nav>
       </Style>
     </div>
   );
@@ -28,7 +28,7 @@ const Style = styled.div`
   justify-content: space-between;
 `;
 
-const Menu = styled.div`
+const Nav = styled.nav`
   width: 50%;
   display: flex;
   justify-content: space-around;

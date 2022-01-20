@@ -1,4 +1,4 @@
-import MainAnimations from "./MainAnimations";
+import MainAnimations from "./MainContent";
 import Navbar from "./Navbar";
 import "./index.css";
 

@@ -2,14 +2,14 @@ import BitcoinAnimation from "./BitcoinAnimation";
 import TextAnimation from "./TextAnimation";
 import styled from "styled-components";
 
-const MainAnimations = () => {
+const MainContent = () => {
   return (
-    <div className="mainAnimations">
+    <section>
       <Style>
         <TextAnimation />
         <BitcoinAnimation />
       </Style>
-    </div>
+    </section>
   );
 };
 
@@ -20,4 +20,4 @@ const Style = styled.div`
   justify-content: space-around;
 `;
 
-export default MainAnimations;
+export default MainContent;
