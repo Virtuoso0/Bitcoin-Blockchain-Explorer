@@ -1,7 +1,6 @@
-import BitcoinAnimation from "./BitcoinAnimation";
-import "./index.css";
 import MainAnimations from "./MainAnimations";
 import Navbar from "./Navbar";
+import "./index.css";
 
 function App() {
   return (
