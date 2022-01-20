@@ -4,7 +4,10 @@ import { Link } from "react-router-dom";
 const TextAnimation = () => {
   return (
     <StyledWrapper>
-      <Title className="fade-in-left">Try our tools for free!</Title>
+      <Title className="fade-in-left">Try our tools for&nbsp;</Title>
+      <Title gold className="fade-in-left">
+        free!
+      </Title>
       <StyledLink to="/blocks">
         <button className="fade-in-left">
           <span>try now</span>
@@ -20,10 +23,12 @@ const StyledLink = styled(Link)`
 `;
 
 const Title = styled.div`
+  display: inline-block;
   font-size: 40px;
   font-weight: 700;
   padding-bottom: 100px;
   margin-top: 100px;
+  color: ${(props) => (props.gold ? "#f48c06" : "white")};
 `;
 
 const StyledWrapper = styled.div`
