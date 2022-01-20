@@ -1,13 +1,19 @@
-import MainAnimations from "./MainContent";
+import Home from "./Home";
 import Navbar from "./Navbar";
 import "./index.css";
+import { BrowserRouter, Route, Routes } from "react-router-dom";
 
 function App() {
   return (
-    <div className="App">
-      <Navbar />
-      <MainAnimations />
-    </div>
+    <BrowserRouter>
+      <div className="App">
+        <Routes>
+          <Route exact path="/" element={<Home />} />
+          <Route path="/blocks" element={<Navbar />} />
+          <Route path="*" element={<Navbar />} />
+        </Routes>
+      </div>
+    </BrowserRouter>
   );
 }
 

@@ -1,24 +1,25 @@
 import logo from "./img/mainLogo.png";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
-    <div className="navbar">
-      <Style>
-        <header>
+    <StyledWrapper>
+      <header>
+        <Link to="/">
           <LogoImg src={logo} alt="logo" />
-        </header>
-        <Nav>
-          <Option>Bitcoin</Option>
-          <Option>Blocks</Option>
-          <Option>Contact us</Option>
-        </Nav>
-      </Style>
-    </div>
+        </Link>
+      </header>
+      <Nav>
+        <Option to="/">Bitcoin</Option>
+        <Option to="/blocks">Blocks</Option>
+        <Option to="/">Contact us</Option>
+      </Nav>
+    </StyledWrapper>
   );
 };
 
-const Style = styled.div`
+const StyledWrapper = styled.div`
   width: 100%;
   display: flex;
   font-size: 22px;
@@ -36,10 +37,12 @@ const Nav = styled.nav`
   background-image: none;
 `;
 
-const Option = styled.div`
+const Option = styled(Link)`
   letter-spacing: 2px;
   transition: all 0.2s ease;
-  &:hover {
+  text-decoration: none;
+  color: white;
+  :hover {
     transform: scale(0.95);
     color: #f48c06;
     cursor: pointer;
@@ -53,7 +56,7 @@ const LogoImg = styled.img`
   margin-top: 4px;
   transition: all 0.2s ease;
   cursor: pointer;
-  &:hover {
+  :hover {
     transform: scale(0.95);
   }
 `;

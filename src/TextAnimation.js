@@ -1,18 +1,23 @@
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const TextAnimation = () => {
   return (
-    <div className="textAnimation">
-      <Style>
-        <Title className="fade-in-left">Try our tools for free!</Title>
+    <StyledWrapper>
+      <Title className="fade-in-left">Try our tools for free!</Title>
+      <StyledLink to="/blocks">
         <button className="fade-in-left">
           <span>try now</span>
           <div class="liquid"></div>
         </button>
-      </Style>
-    </div>
+      </StyledLink>
+    </StyledWrapper>
   );
 };
+
+const StyledLink = styled(Link)`
+  text-decoration: none;
+`;
 
 const Title = styled.div`
   font-size: 40px;
@@ -21,7 +26,7 @@ const Title = styled.div`
   margin-top: 100px;
 `;
 
-const Style = styled.div`
+const StyledWrapper = styled.div`
   .fade-in-left {
     animation: fade-in-left 2.5s ease;
   }
@@ -51,6 +56,7 @@ const Style = styled.div`
   }
 
   button span {
+    text-decoration: none;
     position: relative;
     color: white;
     font-family: Arial;
