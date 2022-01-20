@@ -2,6 +2,7 @@ import Home from "./Home";
 import Navbar from "./Navbar";
 import "./index.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
+import NotFoundPage from "./404";
 
 function App() {
   return (
@@ -10,7 +11,7 @@ function App() {
         <Routes>
           <Route exact path="/" element={<Home />} />
           <Route path="/blocks" element={<Navbar />} />
-          <Route path="*" element={<Navbar />} />
+          <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </div>
     </BrowserRouter>
