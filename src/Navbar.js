@@ -50,8 +50,6 @@ const Option = styled(Link)`
 `;
 
 const LogoImg = styled.img`
-  width: 200px;
-  height: 150px;
   margin-left: 40px;
   margin-top: 4px;
   transition: all 0.2s ease;
