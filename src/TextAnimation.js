@@ -4,13 +4,15 @@ import { Link } from "react-router-dom";
 const TextAnimation = () => {
   return (
     <StyledWrapper>
-      <Title className="fade-in-left">Try our tools for&nbsp;</Title>
-      <Title gold className="fade-in-left">
-        free!
+      <Title className="fade">Specialists in the analysis</Title>
+      <Title className="fade">of</Title>
+      <Title gold className="fade">
+        Blockchain!
       </Title>
+
       <StyledLink to="/blocks">
-        <button className="fade-in-left">
-          <span>try now</span>
+        <button className="fade">
+          <span>try our tools</span>
           <div class="liquid"></div>
         </button>
       </StyledLink>
@@ -23,17 +25,21 @@ const StyledLink = styled(Link)`
 `;
 
 const Title = styled.div`
-  display: inline-block;
+  display: flex;
+  flex-direction: column;
+  text-align: center;
+  letter-spacing: 2px;
   font-size: 40px;
   font-weight: 700;
-  padding-bottom: 100px;
-  margin-top: 100px;
   color: ${(props) => (props.gold ? "#f48c06" : "white")};
+  margin-bottom: ${(props) => (props.gold ? "100px" : "0")};
 `;
 
 const StyledWrapper = styled.div`
-  .fade-in-left {
-    animation: fade-in-left 2.5s ease;
+  margin-top: 100px;
+
+  .fade {
+    animation: fade-in-left 2.6s ease;
   }
   @keyframes fade-in-left {
     0% {
@@ -61,10 +67,9 @@ const StyledWrapper = styled.div`
   }
 
   button span {
-    text-decoration: none;
     position: relative;
     color: white;
-    font-family: Arial;
+    font-family: "Montserrat", sans-serif;
     letter-spacing: 8px;
     z-index: 1;
   }
