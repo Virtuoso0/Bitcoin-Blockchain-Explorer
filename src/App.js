@@ -1,8 +1,8 @@
 import Home from "./Home";
-import Navbar from "./Navbar";
+import NotFoundPage from "./404";
+import BlocksExplorer from "./BlocksExplorer";
 import "./index.css";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
-import NotFoundPage from "./404";
 
 function App() {
   return (
@@ -10,7 +10,7 @@ function App() {
       <div className="App">
         <Routes>
           <Route exact path="/" element={<Home />} />
-          <Route path="/blocks" element={<Navbar />} />
+          <Route path="/blocks" element={<BlocksExplorer />} />
           <Route path="*" element={<NotFoundPage />} />
         </Routes>
       </div>

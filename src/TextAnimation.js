@@ -13,7 +13,7 @@ const TextAnimation = () => {
       <StyledLink to="/blocks">
         <button className="fade">
           <span>try our tools</span>
-          <div class="liquid"></div>
+          <div className="liquid"></div>
         </button>
       </StyledLink>
     </StyledWrapper>
