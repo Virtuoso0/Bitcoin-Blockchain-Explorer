@@ -1,5 +1,4 @@
 import Navbar from "./Navbar";
-import api from "./api/blocks.js";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 
@@ -7,21 +6,32 @@ const BlocksExplorer = () => {
   const [blocks, setBlocks] = useState([]);
 
   useEffect(() => {
-    const fetchBlocks = async () => {
+    const ws = new WebSocket("wss://ws.blockchain.info/inv");
+    const apiCallBlocks = {
+      op: "blocks_sub",
+    };
+    const apiCallPing = {
+      op: "ping",
+    };
+
+    ws.onopen = (event) => {
+      ws.send(JSON.stringify(apiCallBlocks));
+    };
+    setInterval(() => ws.send(JSON.stringify(apiCallPing)), 60000);
+
+    const tempArray = [];
+    ws.onmessage = function (event) {
       try {
-        const response = await api.get("/");
-        setBlocks(response.data.slice(0, 5));
-      } catch (err) {
-        if (err.response) {
-          console.log(err.response.data);
-          console.log(err.response.status);
-          console.log(err.response.headers);
-        } else {
-          console.log(`Error: ${err.message}`);
+        if (!event.data === '{"op":"pong"}') {
+          const json = JSON.parse(event.data);
+          tempArray.push(json);
+          setBlocks(tempArray);
         }
+      } catch (err) {
+        console.log(err);
       }
     };
-    fetchBlocks();
+    return () => ws.close();
   }, []);
 
   return (
@@ -29,7 +39,7 @@ const BlocksExplorer = () => {
       <Navbar />
       <Blocks>
         {blocks.map((block) => (
-          <Block key={block.block_index}>
+          <Block key={block.blockIndex}>
             <p>{block.height}</p>
           </Block>
         ))}
