@@ -5,16 +5,17 @@ import styled from "styled-components";
 const MainContent = () => {
   return (
     <section>
-      <StyledWrapper>
+      <Wrapper>
         <TextAnimation />
         <BitcoinAnimation />
-      </StyledWrapper>
+      </Wrapper>
     </section>
   );
 };
 
-const StyledWrapper = styled.div`
+const Wrapper = styled.div`
   width: 100%;
+  padding-top: 100px;
   display: flex;
   align-items: center;
   justify-content: space-around;

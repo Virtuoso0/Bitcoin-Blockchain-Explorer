@@ -7,7 +7,6 @@ const BitcoinAnimation = () => {
 
 const StyledImg = styled.img`
   width: 30vw;
-  margin-top: 100px;
   animation: fade-in 2.5s linear;
   @keyframes fade-in {
     from {

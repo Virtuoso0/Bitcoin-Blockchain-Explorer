@@ -4,15 +4,15 @@ import pageNotFoundImg from "./img/404.png";
 
 const NotFoundPage = () => {
   return (
-    <StyledWrapper>
+    <Wrapper>
       <Navbar />
       <StyledImg src={pageNotFoundImg} alt="page-not-found-image" />
       <H1>404 - Page Not Found</H1>
-    </StyledWrapper>
+    </Wrapper>
   );
 };
 
-const StyledWrapper = styled.div`
+const Wrapper = styled.div`
   display: flex;
   align-items: center;
   flex-direction: column;

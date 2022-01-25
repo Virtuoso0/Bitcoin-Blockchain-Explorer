@@ -3,7 +3,7 @@ import { Link } from "react-router-dom";
 
 const TextAnimation = () => {
   return (
-    <StyledWrapper>
+    <Wrapper>
       <Title className="fade">Specialists in the analysis</Title>
       <Title className="fade">of</Title>
       <Title gold className="fade">
@@ -16,7 +16,7 @@ const TextAnimation = () => {
           <div className="liquid"></div>
         </button>
       </StyledLink>
-    </StyledWrapper>
+    </Wrapper>
   );
 };
 
@@ -29,15 +29,13 @@ const Title = styled.div`
   flex-direction: column;
   text-align: center;
   letter-spacing: 2px;
-  font-size: 40px;
+  font-size: 2.5rem;
   font-weight: 700;
   color: ${(props) => (props.gold ? "#f48c06" : "white")};
   margin-bottom: ${(props) => (props.gold ? "100px" : "0")};
 `;
 
-const StyledWrapper = styled.div`
-  margin-top: 100px;
-
+const Wrapper = styled.div`
   .fade {
     animation: fade-in-left 2.6s ease;
   }
@@ -70,7 +68,7 @@ const StyledWrapper = styled.div`
     position: relative;
     color: white;
     font-family: "Montserrat", sans-serif;
-    letter-spacing: 8px;
+    letter-spacing: 6px;
     z-index: 1;
   }
 

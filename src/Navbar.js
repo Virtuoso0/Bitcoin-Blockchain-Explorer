@@ -4,7 +4,7 @@ import { Link } from "react-router-dom";
 
 const Navbar = () => {
   return (
-    <StyledWrapper>
+    <Wrapper>
       <header>
         <Link to="/">
           <LogoImg src={logo} alt="logo" />
@@ -15,14 +15,14 @@ const Navbar = () => {
         <Option to="/blocks">Blocks</Option>
         <Option to="/">Contact us</Option>
       </Nav>
-    </StyledWrapper>
+    </Wrapper>
   );
 };
 
-const StyledWrapper = styled.div`
+const Wrapper = styled.div`
   width: 100%;
   display: flex;
-  font-size: 22px;
+  font-size: 1.3rem;
   background-color: #03071e;
   background-image: none;
   border-bottom: 1px solid #f48c06;
@@ -50,7 +50,7 @@ const Option = styled(Link)`
 `;
 
 const LogoImg = styled.img`
-  margin-left: 40px;
+  margin-left: 2em;
   margin-top: 4px;
   transition: all 0.2s ease;
   cursor: pointer;
