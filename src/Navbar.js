@@ -23,9 +23,9 @@ const Wrapper = styled.div`
   width: 100%;
   display: flex;
   font-size: 1.3rem;
-  background-color: #03071e;
+  background-color: #0c0c0f;
   background-image: none;
-  border-bottom: 1px solid #f48c06;
+  border-bottom: 1px solid gray;
   justify-content: space-between;
 `;
 
@@ -44,7 +44,7 @@ const Option = styled(Link)`
   color: white;
   :hover {
     transform: scale(0.95);
-    color: #f48c06;
+    color: #faa307;
     cursor: pointer;
   }
 `;

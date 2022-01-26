@@ -11,10 +11,7 @@ const TextAnimation = () => {
       </Title>
 
       <StyledLink to="/blocks">
-        <button className="fade">
-          <span>try our tools</span>
-          <div className="liquid"></div>
-        </button>
+        <StyledButton className="fade">try our tools</StyledButton>
       </StyledLink>
     </Wrapper>
   );
@@ -31,11 +28,15 @@ const Title = styled.div`
   letter-spacing: 2px;
   font-size: 2.5rem;
   font-weight: 700;
-  color: ${(props) => (props.gold ? "#f48c06" : "white")};
-  margin-bottom: ${(props) => (props.gold ? "100px" : "0")};
+  color: ${(props) => (props.gold ? "#faa307" : "white")};
+  margin-bottom: ${(props) => (props.gold ? "90px" : "0")};
 `;
 
 const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
   .fade {
     animation: fade-in-left 2.6s ease;
   }
@@ -49,76 +50,25 @@ const Wrapper = styled.div`
       transform: translateX(0);
     }
   }
+`;
 
-  button {
-    margin-left: auto;
-    margin-right: auto;
-    position: relative;
-    padding: 28px 54px;
-    display: block;
-    text-decoration: none;
-    text-transform: uppercase;
-    overflow: hidden;
-    border-radius: 40px;
-    border: 1px solid rgb(255, 81, 0);
-    cursor: pointer;
-  }
+const StyledButton = styled.button`
+  padding: 1.3em 3em;
+  font-size: 1rem;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  font-weight: 700;
+  color: black;
+  background-color: #f48c06;
+  border: none;
+  border-radius: 45px;
+  transition: all 0.3s ease 0s;
+  cursor: pointer;
 
-  button span {
-    position: relative;
-    color: white;
-    font-family: "Montserrat", sans-serif;
-    letter-spacing: 6px;
-    z-index: 1;
-  }
-
-  button .liquid {
-    position: absolute;
-    top: -80px;
-    left: 0;
-    width: 100%;
-    height: 200px;
-    background: rgb(255, 81, 0);
-    box-shadow: inset 0 0 50px rgba(0, 0, 0, 0.5);
-    transition: 0.5s;
-  }
-
-  button .liquid::after,
-  button .liquid::before {
-    content: "";
-    width: 200%;
-    height: 200%;
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translate(-50%, -75%);
-    background: #fff;
-  }
-
-  button .liquid::before {
-    border-radius: 45%;
-    background: rgba(20, 20, 20, 0.5);
-    animation: animate 5s linear infinite;
-  }
-
-  button .liquid::after {
-    border-radius: 40%;
-    background: rgba(20, 20, 20, 0.5);
-    animation: animate 10s linear infinite;
-  }
-
-  button:hover .liquid {
-    top: -120px;
-  }
-
-  @keyframes animate {
-    0% {
-      transform: translate(-50%, -75%) rotate(0deg);
-    }
-
-    100% {
-      transform: translate(-50%, -75%) rotate(360deg);
-    }
+  &:hover {
+    background-color: #faa307;
+    color: black;
+    transform: translateY(-7px);
   }
 `;
 

@@ -14,6 +14,8 @@ const NotFoundPage = () => {
 
 const Wrapper = styled.div`
   display: flex;
+  height: 100vh;
+  background-image: url(https://hatchet.com.au/art/backgrounds/background-circuit-dark.svg);
   align-items: center;
   flex-direction: column;
 `;
