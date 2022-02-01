@@ -2,8 +2,8 @@ import Navbar from "./Navbar";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 
-let blockInfo = null;
 const blocksArray = [];
+let blockInfo = null;
 let firstBlock = true;
 let setBlocksTimeout = null;
 let setPingInterval = null;
@@ -12,32 +12,12 @@ const BlocksExplorer = () => {
   const [oldBlocks, setOldBlocks] = useState([]);
   const [lastBlock, setLastBlock] = useState(null);
   const [testButton, setTestButton] = useState(null);
-  // const [lastBlockTime, setLastBlockTime] = useState(null);
-  // const [timeArr, setTimeArr] = useState([]);
-
-  // const setTimeUpdater = () => {
-  //   setInterval(() => {
-  //     if (blockInfo) {
-  //       setLastBlockTime(
-  //         Math.ceil((Date.now() - blockInfo.time * 1000) / 60000)
-  //       );
-  //     }
-  //     const tempArr = [];
-  //     oldBlocks.forEach((block) => {
-  //       tempArr.shift((Date.now() - block.time * 1000) / 60000);
-  //     });
-  //     setTimeArr(tempArr);
-  //   }, 5000);
-  // };
-  // setTimeUpdater();
 
   const saveLastBlockInfo = (json) => {
-    console.log(json);
     blockInfo = {
       blockIndex: json.x.blockIndex,
       nTx: json.x.nTx,
       reward: Math.trunc(json.x.reward / 1000000) / 100,
-      time: json.x.time,
     };
   };
 
@@ -48,26 +28,21 @@ const BlocksExplorer = () => {
           <LastBlock fadeOut>
             <LastBlockInfo index>{blockInfo.blockIndex}</LastBlockInfo>
             <LastBlockInfo>{`transactions:   ${blockInfo.nTx}`}</LastBlockInfo>
-            <LastBlockInfo>{`reward:   ${blockInfo.reward}`}</LastBlockInfo>
+            <LastBlockInfo>{`reward:   ${blockInfo.reward} BTC`}</LastBlockInfo>
           </LastBlock>
-          {/* <Timer fadeOut>
-            {lastBlockTime && `${lastBlockTime} minutes ago`}
-          </Timer> */}
         </>
       );
     }
 
     setBlocksTimeout = setTimeout(() => {
+      const reward = Math.trunc(json.x.reward / 1000000) / 100;
       setLastBlock(
         <>
           <LastBlock fadeIn>
             <LastBlockInfo index>{json.x.blockIndex}</LastBlockInfo>
             <LastBlockInfo>{`transactions:   ${json.x.nTx}`}</LastBlockInfo>
-            <LastBlockInfo>{`reward:   ${blockInfo.reward}`}</LastBlockInfo>
+            <LastBlockInfo>{`reward:   ${reward} BTC`}</LastBlockInfo>
           </LastBlock>
-          {/* <Timer fadeOut>
-            {lastBlockTime && `${lastBlockTime} minutes ago`}
-          </Timer> */}
         </>
       );
     }, 800);
@@ -141,19 +116,6 @@ const BlocksExplorer = () => {
       }
     };
 
-    // setInterval(() => {
-    //   if (blockInfo) {
-    //     setLastBlockTime(
-    //       Math.ceil((Date.now() - blockInfo.time * 1000) / 60000)
-    //     );
-    //   }
-    //   const tempArr = [];
-    //   oldBlocks.forEach((block) => {
-    //     tempArr.shift((Date.now() - block.time * 1000) / 60000);
-    //   });
-    //   setTimeArr(tempArr);
-    // }, 5000);
-
     return () => {
       clearTimeout(setBlocksTimeout);
       clearInterval(setPingInterval);
@@ -198,6 +160,7 @@ const BlockInfo = styled.p`
   color: ${(props) => (props.index ? "white" : "white")};
   letter-spacing: ${(props) => (props.index ? "1px" : "0")};
   font-weight: ${(props) => (props.index ? "700" : "400")};
+  ${(props) => (props.index ? "" : "margin: 2px")};
 `;
 
 const Block = styled.div`
@@ -264,32 +227,6 @@ const LastBlockWrapper = styled.div`
   display: flex;
   flex-direction: column;
   padding: 50px;
-`;
-
-const Timer = styled.div`
-  width: 100%;
-  position: absolute;
-  text-align: center;
-  bottom: 8vw;
-  left: 0;
-
-  animation: ${(props) => (props.fadeOut ? "fadeOut" : "fadeIn")} 0.8s linear;
-
-  @keyframes fadeOut {
-    from {
-      opacity: 1;
-    }
-    to {
-      opacity: 0;
-    }
-  }
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-    }
-    to {
-      opacity: 1;
-    }
 `;
 
 const LastBlock = styled(Block)`
