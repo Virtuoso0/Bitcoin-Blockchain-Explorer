@@ -11,13 +11,22 @@ let setPingInterval = null;
 const BlocksExplorer = () => {
   const [oldBlocks, setOldBlocks] = useState([]);
   const [lastBlock, setLastBlock] = useState(null);
+  const [lastBlockInfoTable, setLastBlockInfoTable] = useState(null);
   const [testButton, setTestButton] = useState(null);
 
   const saveLastBlockInfo = (json) => {
+    console.log(json);
     blockInfo = {
       blockIndex: json.x.blockIndex,
+      hash: json.x.hash,
+      mrklRoot: json.x.mrklRoot,
       nTx: json.x.nTx,
+      nonce: json.x.nonce,
       reward: Math.trunc(json.x.reward / 1000000) / 100,
+      size: json.x.size,
+      time: json.x.time,
+      version: json.x.version,
+      weight: json.x.weight,
     };
   };
 
@@ -123,25 +132,78 @@ const BlocksExplorer = () => {
     };
   }, []);
 
+  useEffect(() => {
+    if (blockInfo)
+      setLastBlockInfoTable(
+        <>
+          <Row>Block Index:{blockInfo.blockIndex}</Row>
+          <Row color>hash:{blockInfo.hash}</Row>
+          <Row>Merkle root :{blockInfo.mrklRoot}</Row>
+          <Row color>Number of transaction:{blockInfo.nTx}</Row>
+          <Row>Nonce:{blockInfo.nonce}</Row>
+          <Row color>Reward:{blockInfo.reward}BTC</Row>
+          <Row>Size:{blockInfo.size}</Row>
+          <Row color>Time:{blockInfo.time}</Row>
+          <Row>Version:{blockInfo.version}</Row>
+          <Row color>Weight:{blockInfo.weight}</Row>
+        </>
+      );
+  }, [lastBlock]);
+
   return (
     <Wrapper>
       <Navbar />
-      <AllBlocks>
+      <BlocksSection>
         <LastBlockWrapper>{lastBlock}</LastBlockWrapper>
         <BlocksHistory>{oldBlocks}</BlocksHistory>
-      </AllBlocks>
+      </BlocksSection>
       {testButton}
+      <BlockInfoSection>
+        <TitleRow>Last Block Info</TitleRow>
+        {lastBlockInfoTable}
+      </BlockInfoSection>
     </Wrapper>
   );
 };
 
+const BlockInfoSection = styled.section`
+  display: flex;
+  flex-direction: column;
+  width: 85%;
+  min-height: 400px;
+  margin-left: auto;
+  margin-right: auto;
+  border: 1px solid gray;
+  background-color: #0e0e11;
+`;
+
+const Row = styled.div`
+  display: flex;
+
+  align-items: center;
+  width: 100%;
+  height: 40px;
+  padding-left: 30px;
+  background-color: ${(props) => (props.color ? "#3d348b" : "#52338c")};
+  color: white;
+`;
+
+const TitleRow = styled(Row)`
+  justify-content: center;
+  padding-top: auto;
+  font-size: 1.5rem;
+  padding: 0;
+  height: 60px;
+  background-color: #ad6834;
+`;
+
 const Wrapper = styled.div`
-  height: 100vh;
+  height: 100%;
   background-color: #0e0e11;
   background-image: url(https://hatchet.com.au/art/backgrounds/background-happy-dark.svg);
 `;
 
-const AllBlocks = styled.div`
+const BlocksSection = styled.section`
   display: flex;
   width: 100%;
   padding-top: 30px;
