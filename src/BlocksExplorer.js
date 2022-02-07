@@ -15,7 +15,6 @@ const BlocksExplorer = () => {
   const [testButton, setTestButton] = useState(null);
 
   const saveLastBlockInfo = (json) => {
-    console.log(json);
     blockInfo = {
       blockIndex: json.x.blockIndex,
       hash: json.x.hash,
@@ -36,8 +35,12 @@ const BlocksExplorer = () => {
         <>
           <LastBlock fadeOut>
             <LastBlockInfo index>{blockInfo.blockIndex}</LastBlockInfo>
-            <LastBlockInfo>{`transactions:   ${blockInfo.nTx}`}</LastBlockInfo>
-            <LastBlockInfo>{`reward:   ${blockInfo.reward} BTC`}</LastBlockInfo>
+            <LastBlockInfo>
+              transactions:<Bold>{blockInfo.nTx}</Bold>
+            </LastBlockInfo>
+            <LastBlockInfo>
+              reward:<Bold>{blockInfo.reward}&nbsp;BTC</Bold>
+            </LastBlockInfo>
           </LastBlock>
         </>
       );
@@ -49,8 +52,12 @@ const BlocksExplorer = () => {
         <>
           <LastBlock fadeIn>
             <LastBlockInfo index>{json.x.blockIndex}</LastBlockInfo>
-            <LastBlockInfo>{`transactions:   ${json.x.nTx}`}</LastBlockInfo>
-            <LastBlockInfo>{`reward:   ${reward} BTC`}</LastBlockInfo>
+            <LastBlockInfo>
+              transactions:<Bold>{json.x.nTx}</Bold>
+            </LastBlockInfo>
+            <LastBlockInfo>
+              reward:<Bold>{reward}&nbsp;BTC</Bold>
+            </LastBlockInfo>
           </LastBlock>
         </>
       );
@@ -62,7 +69,9 @@ const BlocksExplorer = () => {
         <Block fadeOut key={index}>
           <BlockInfo index>{block.blockIndex}</BlockInfo>
           <BlockInfo>transactions:</BlockInfo>
-          <BlockInfo>{block.nTx}</BlockInfo>
+          <BlockInfo>
+            <Bold>{block.nTx}</Bold>
+          </BlockInfo>
         </Block>
       ))
     );
@@ -76,7 +85,9 @@ const BlocksExplorer = () => {
           <Block fadeIn key={index}>
             <BlockInfo index>{block.blockIndex}</BlockInfo>
             <BlockInfo>transactions:</BlockInfo>
-            <BlockInfo>{block.nTx}</BlockInfo>
+            <BlockInfo>
+              <Bold>{block.nTx}</Bold>
+            </BlockInfo>
           </Block>
         ))
       );
@@ -136,16 +147,36 @@ const BlocksExplorer = () => {
     if (blockInfo)
       setLastBlockInfoTable(
         <>
-          <Row>Block Index:{blockInfo.blockIndex}</Row>
-          <Row color>hash:{blockInfo.hash}</Row>
-          <Row>Merkle root :{blockInfo.mrklRoot}</Row>
-          <Row color>Number of transaction:{blockInfo.nTx}</Row>
-          <Row>Nonce:{blockInfo.nonce}</Row>
-          <Row color>Reward:{blockInfo.reward}BTC</Row>
-          <Row>Size:{blockInfo.size}</Row>
-          <Row color>Time:{blockInfo.time}</Row>
-          <Row>Version:{blockInfo.version}</Row>
-          <Row color>Weight:{blockInfo.weight}</Row>
+          <Row>
+            Block Index:&nbsp;&nbsp;<Bold>{blockInfo.blockIndex}</Bold>
+          </Row>
+          <Row color>
+            hash:<Bold>&nbsp;&nbsp;{blockInfo.hash}</Bold>
+          </Row>
+          <Row>
+            Merkle root:&nbsp;&nbsp;<Bold>{blockInfo.mrklRoot}</Bold>
+          </Row>
+          <Row color>
+            Number of transaction:&nbsp;&nbsp;<Bold>{blockInfo.nTx}</Bold>
+          </Row>
+          <Row>
+            Nonce:&nbsp;&nbsp;<Bold>{blockInfo.nonce}</Bold>
+          </Row>
+          <Row color>
+            Reward:&nbsp;&nbsp;<Bold>{blockInfo.reward}&nbsp;BTC</Bold>
+          </Row>
+          <Row>
+            Size:&nbsp;&nbsp;<Bold>{blockInfo.size}</Bold>
+          </Row>
+          <Row color>
+            Time:&nbsp;&nbsp;<Bold>{blockInfo.time}</Bold>
+          </Row>
+          <Row>
+            Version:&nbsp;&nbsp;<Bold>{blockInfo.version}</Bold>
+          </Row>
+          <Row color>
+            Weight:&nbsp;&nbsp;<Bold>{blockInfo.weight}</Bold>
+          </Row>
         </>
       );
   }, [lastBlock]);
@@ -155,6 +186,7 @@ const BlocksExplorer = () => {
       <Navbar />
       <BlocksSection>
         <LastBlockWrapper>{lastBlock}</LastBlockWrapper>
+        <Divider />
         <BlocksHistory>{oldBlocks}</BlocksHistory>
       </BlocksSection>
       {testButton}
@@ -173,25 +205,41 @@ const BlockInfoSection = styled.section`
   min-height: 400px;
   margin-left: auto;
   margin-right: auto;
-  border: 1px solid gray;
+  margin-bottom: 50px;
+  border: 2px solid #ad6834;
+  border-radius: 4px;
   background-color: #0e0e11;
+`;
+
+const Divider = styled.div`
+  width: 3px;
+  height: 220px;
+  margin-left: 3vw;
+  border-right: 3px dotted white;
 `;
 
 const Row = styled.div`
   display: flex;
-
+  font-family: "Montserrat", sans-serif;
   align-items: center;
   width: 100%;
   height: 40px;
   padding-left: 30px;
-  background-color: ${(props) => (props.color ? "#3d348b" : "#52338c")};
+  background-color: ${(props) => (props.color ? "#24242b" : "#1b1b21")};
   color: white;
+`;
+
+const Bold = styled.div`
+  font-weight: 700;
 `;
 
 const TitleRow = styled(Row)`
   justify-content: center;
   padding-top: auto;
+  font-family: "Orbitron";
   font-size: 1.5rem;
+  font-weight: 700;
+  letter-spacing: 2px;
   padding: 0;
   height: 60px;
   background-color: #ad6834;
