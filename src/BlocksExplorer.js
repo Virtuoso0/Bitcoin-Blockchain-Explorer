@@ -14,18 +14,35 @@ const BlocksExplorer = () => {
   const [lastBlockInfoTable, setLastBlockInfoTable] = useState(null);
   const [testButton, setTestButton] = useState(null);
 
+  const convertUnixTime = (unixTimestamp) => {
+    const includeZero = (number) => {
+      if (number < 10) return `0${number}`;
+      else return number;
+    };
+
+    const date = new Date(unixTimestamp * 1000);
+    const day = includeZero(date.getDate());
+    const month = includeZero(date.getMonth() + 1);
+    const year = date.getFullYear();
+    const hours = includeZero(date.getHours());
+    const minutes = includeZero(date.getMinutes());
+    const seconds = includeZero(date.getSeconds());
+
+    return `${hours}:${minutes}:${seconds} / ${day}.${month}.${year}`;
+  };
+
   const saveLastBlockInfo = (json) => {
     blockInfo = {
       blockIndex: json.x.blockIndex,
       hash: json.x.hash,
       mrklRoot: json.x.mrklRoot,
       nTx: json.x.nTx,
-      nonce: json.x.nonce,
+      nonce: json.x.nonce.toString(16),
       reward: Math.trunc(json.x.reward / 1000000) / 100,
-      size: json.x.size,
-      time: json.x.time,
-      version: json.x.version,
-      weight: json.x.weight,
+      size: Math.trunc(json.x.size / 10000) / 100,
+      time: convertUnixTime(json.x.time),
+      version: json.x.version.toString(16),
+      weight: Math.trunc(json.x.weight / 10000) / 100,
     };
   };
 
@@ -160,22 +177,22 @@ const BlocksExplorer = () => {
             Number of transaction:&nbsp;&nbsp;<Bold>{blockInfo.nTx}</Bold>
           </Row>
           <Row>
-            Nonce:&nbsp;&nbsp;<Bold>{blockInfo.nonce}</Bold>
+            Nonce:&nbsp;&nbsp;<Bold>{"0x" + blockInfo.nonce}</Bold>
           </Row>
           <Row diffColor>
             Reward:&nbsp;&nbsp;<Bold>{blockInfo.reward}&nbsp;BTC</Bold>
           </Row>
           <Row>
-            Size:&nbsp;&nbsp;<Bold>{blockInfo.size}</Bold>
+            Size:&nbsp;&nbsp;<Bold>{blockInfo.size}&nbsp;MB</Bold>
           </Row>
           <Row diffColor>
             Time:&nbsp;&nbsp;<Bold>{blockInfo.time}</Bold>
           </Row>
           <Row>
-            Version:&nbsp;&nbsp;<Bold>{blockInfo.version}</Bold>
+            Version:&nbsp;&nbsp;<Bold>{"0x" + blockInfo.version}</Bold>
           </Row>
           <Row diffColor>
-            Weight:&nbsp;&nbsp;<Bold>{blockInfo.weight}</Bold>
+            Weight:&nbsp;&nbsp;<Bold>{blockInfo.weight}&nbsp;MWU</Bold>
           </Row>
         </>
       );
