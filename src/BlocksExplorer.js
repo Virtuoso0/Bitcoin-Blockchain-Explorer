@@ -150,31 +150,31 @@ const BlocksExplorer = () => {
           <Row>
             Block Index:&nbsp;&nbsp;<Bold>{blockInfo.blockIndex}</Bold>
           </Row>
-          <Row color>
+          <Row diffColor>
             hash:<Bold>&nbsp;&nbsp;{blockInfo.hash}</Bold>
           </Row>
           <Row>
             Merkle root:&nbsp;&nbsp;<Bold>{blockInfo.mrklRoot}</Bold>
           </Row>
-          <Row color>
+          <Row diffColor>
             Number of transaction:&nbsp;&nbsp;<Bold>{blockInfo.nTx}</Bold>
           </Row>
           <Row>
             Nonce:&nbsp;&nbsp;<Bold>{blockInfo.nonce}</Bold>
           </Row>
-          <Row color>
+          <Row diffColor>
             Reward:&nbsp;&nbsp;<Bold>{blockInfo.reward}&nbsp;BTC</Bold>
           </Row>
           <Row>
             Size:&nbsp;&nbsp;<Bold>{blockInfo.size}</Bold>
           </Row>
-          <Row color>
+          <Row diffColor>
             Time:&nbsp;&nbsp;<Bold>{blockInfo.time}</Bold>
           </Row>
           <Row>
             Version:&nbsp;&nbsp;<Bold>{blockInfo.version}</Bold>
           </Row>
-          <Row color>
+          <Row diffColor>
             Weight:&nbsp;&nbsp;<Bold>{blockInfo.weight}</Bold>
           </Row>
         </>
@@ -186,7 +186,7 @@ const BlocksExplorer = () => {
       <Navbar />
       <BlocksSection>
         <LastBlockWrapper>{lastBlock}</LastBlockWrapper>
-        <Divider />
+        {lastBlock && <Divider />}
         <BlocksHistory>{oldBlocks}</BlocksHistory>
       </BlocksSection>
       {testButton}
@@ -225,11 +225,11 @@ const Row = styled.div`
   width: 100%;
   height: 40px;
   padding-left: 30px;
-  background-color: ${(props) => (props.color ? "#24242b" : "#1b1b21")};
+  background-color: ${(props) => (props.diffColor ? "#24242b" : "#1b1b21")};
   color: white;
 `;
 
-const Bold = styled.div`
+const Bold = styled.span`
   font-weight: 700;
 `;
 
@@ -254,20 +254,19 @@ const Wrapper = styled.div`
 const BlocksSection = styled.section`
   display: flex;
   width: 100%;
+  min-height: 31.5vw;
   padding-top: 30px;
   align-items: center;
 `;
 
 const LastBlockInfo = styled.p`
   font-size: ${(props) => (props.index ? "2.2vw" : "1.4vw")};
-  color: ${(props) => (props.index ? "white" : "white")};
   letter-spacing: ${(props) => (props.index ? "1px" : "0")};
   font-weight: ${(props) => (props.index ? "700" : "400")};
 `;
 
 const BlockInfo = styled.p`
   font-size: ${(props) => (props.index ? "1.22vw" : "1vw")};
-  color: ${(props) => (props.index ? "white" : "white")};
   letter-spacing: ${(props) => (props.index ? "1px" : "0")};
   font-weight: ${(props) => (props.index ? "700" : "400")};
   ${(props) => (props.index ? "" : "margin: 2px")};
