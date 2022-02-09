@@ -1,4 +1,5 @@
 import Navbar from "./Navbar";
+import Footer from "./Footer";
 import { useEffect, useState } from "react";
 import styled from "styled-components";
 
@@ -211,6 +212,7 @@ const BlocksExplorer = () => {
         <TitleRow>Last Block Info</TitleRow>
         {lastBlockInfoTable}
       </BlockInfoSection>
+      <Footer />
     </Wrapper>
   );
 };
@@ -253,7 +255,7 @@ const Bold = styled.span`
 const TitleRow = styled(Row)`
   justify-content: center;
   padding-top: auto;
-  font-family: "Orbitron";
+  font-family: "Orbitron", sans-serif;
   font-size: 1.5rem;
   font-weight: 700;
   letter-spacing: 2px;
@@ -292,7 +294,7 @@ const BlockInfo = styled.p`
 const Block = styled.div`
   position: relative;
   font-weight: 700;
-  font-family: Orbitron;
+  font-family: "Orbitron", sans-serif;
   width: 10vw;
   height: 10vw;
   margin: 2vw;

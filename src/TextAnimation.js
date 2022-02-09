@@ -57,6 +57,7 @@ const StyledButton = styled.button`
   font-size: 1rem;
   text-transform: uppercase;
   letter-spacing: 2px;
+  font-family: "Orbitron", sans-serif;
   font-weight: 700;
   color: black;
   background-color: #f48c06;

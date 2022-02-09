@@ -1,5 +1,6 @@
 import MainContent from "./MainContent";
 import Navbar from "./Navbar";
+import Footer from "./Footer";
 import styled from "styled-components";
 
 const Home = () => {
@@ -7,6 +8,7 @@ const Home = () => {
     <Wrapper>
       <Navbar />
       <MainContent />
+      <Footer />
     </Wrapper>
   );
 };

@@ -1,4 +1,5 @@
 import Navbar from "./Navbar";
+import Footer from "./Footer";
 import styled from "styled-components";
 import pageNotFoundImg from "./img/404.png";
 
@@ -8,13 +9,14 @@ const NotFoundPage = () => {
       <Navbar />
       <StyledImg src={pageNotFoundImg} alt="page-not-found-image" />
       <H1>404 - Page Not Found</H1>
+      <Footer />
     </Wrapper>
   );
 };
 
 const Wrapper = styled.div`
   display: flex;
-  height: 100vh;
+  min-height: 100vh;
   background-image: url(https://hatchet.com.au/art/backgrounds/background-circuit-dark.svg);
   align-items: center;
   flex-direction: column;
@@ -22,6 +24,8 @@ const Wrapper = styled.div`
 
 const H1 = styled.h1`
   text-align: center;
+  padding-top: 30px;
+  padding-bottom: 100px;
 `;
 
 const StyledImg = styled.img`
