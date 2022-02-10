@@ -40,8 +40,9 @@ const Text = styled.p`
 `;
 
 const Social = styled.div`
+  text-shadow: 2px 0px 10px rgba(0, 0, 0, 0.8);
   .icon-button {
-    background-color: white;
+    background-color: #f48c06;
     border-radius: 2.4rem;
     cursor: pointer;
     display: inline-block;
@@ -95,13 +96,13 @@ const Social = styled.div`
     z-index: 10;
   }
   .icon-button .icon-twitter {
-    color: #4099ff;
+    color: white;
   }
   .icon-button .icon-facebook {
-    color: #3b5998;
+    color: white;
   }
   .icon-button .icon-github {
-    color: #db5a3c;
+    color: white;
   }
   .icon-button:hover .icon-twitter,
   .icon-button:hover .icon-facebook,
