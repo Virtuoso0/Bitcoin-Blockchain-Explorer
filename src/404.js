@@ -1,25 +1,31 @@
 import Navbar from "./Navbar";
+import Footer from "./Footer";
 import styled from "styled-components";
 import pageNotFoundImg from "./img/404.png";
 
 const NotFoundPage = () => {
   return (
-    <StyledWrapper>
+    <Wrapper>
       <Navbar />
       <StyledImg src={pageNotFoundImg} alt="page-not-found-image" />
       <H1>404 - Page Not Found</H1>
-    </StyledWrapper>
+      <Footer />
+    </Wrapper>
   );
 };
 
-const StyledWrapper = styled.div`
+const Wrapper = styled.div`
   display: flex;
+  min-height: 100vh;
+  background-image: url(https://hatchet.com.au/art/backgrounds/background-circuit-dark.svg);
   align-items: center;
   flex-direction: column;
 `;
 
 const H1 = styled.h1`
   text-align: center;
+  padding-top: 30px;
+  padding-bottom: 100px;
 `;
 
 const StyledImg = styled.img`
