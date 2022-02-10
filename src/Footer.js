@@ -5,15 +5,30 @@ const Footer = () => {
     <Wrapper>
       <Text>Wszelkie prawa zastrzeżone &copy;Patryk Piecuch</Text>
       <Social>
-        <a href="https://twitter.com" className="icon-button twitter">
+        <a
+          href="https://twitter.com"
+          target="_blank"
+          rel="noreferrer noopener"
+          className="icon-button twitter"
+        >
           <i className="icon-twitter fa-brands fa-twitter"></i>
           <span></span>
         </a>
-        <a href="https://facebook.com" className="icon-button facebook">
+        <a
+          href="https://facebook.com"
+          target="_blank"
+          rel="noreferrer noopener"
+          className="icon-button facebook"
+        >
           <i className="icon-facebook fa-brands fa-facebook-f"></i>
           <span></span>
         </a>
-        <a href="https://github.com" className="icon-button github">
+        <a
+          href="https://github.com/Virtuoso0"
+          target="_blank"
+          rel="noreferrer noopener"
+          className="icon-button github"
+        >
           <i className="icon-github fa-brands fa-github"></i>
           <span></span>
         </a>
