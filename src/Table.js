@@ -1,63 +1,77 @@
-import { useEffect, useState } from "react";
 import styled from "styled-components";
 
-const TrxTable = [];
-
-const Table = (contents) => {
-  const [lastTransactions, setLastTransactions] = useState(null);
-
-  const addToTable = (json) => {
-    if (TrxTable.length > 5) TrxTable.pop();
-    TrxTable.unshift(json);
-    setLastTransactions(
-      TrxTable.map((content, index) => (
-        <Row key={index}>test{content.x.hash}</Row>
-      ))
-    );
-  };
-
-  useEffect(() => {
-    const ws = new WebSocket("wss://ws.blockchain.info/inv");
-    const apiCallTransactions = {
-      op: "unconfirmed_sub",
-    };
-
-    ws.onopen = () => ws.send(JSON.stringify(apiCallTransactions));
-
-    ws.onmessage = function (event) {
-      const json = JSON.parse(event.data);
-      addToTable(json);
-    };
-  }, []);
-
+const Table = ({ contents }) => {
   return (
     <Wrapper>
       <TitleRow>Last Transactions</TitleRow>
-      {lastTransactions}
+      <ColumnWrapper>
+        <Column width="22">
+          {contents.map((content, index) => (
+            <Row key={index}>
+              <Element>Time:{content.time}</Element>
+            </Row>
+          ))}
+        </Column>
+        <Column width="37">
+          {contents.map((content, index) => (
+            <Row key={index}>
+              <Element>Amount:{content.amount}</Element>
+            </Row>
+          ))}
+        </Column>
+        <Column width="19">
+          {contents.map((content, index) => (
+            <Row key={index}>
+              <Element>Size:{content.size}</Element>
+            </Row>
+          ))}
+        </Column>
+        <Column width="22">
+          {contents.map((content, index) => (
+            <Row key={index}>
+              <Element>Fee:{content.fee}</Element>
+            </Row>
+          ))}
+        </Column>
+      </ColumnWrapper>
     </Wrapper>
   );
 };
 
 const Wrapper = styled.div`
-  width: 40%;
-  min-height: 300px;
-  background-color: red;
+  width: 60%;
+  margin: 40px;
+  border: 2px solid #ad6834;
+  border-radius: 4px;
+`;
+
+const Element = styled.div``;
+
+const Column = styled.div`
+  display: flex;
+  width: ${(props) => props.width}%;
+  flex-direction: column;
+  justify-content: center;
+`;
+
+const ColumnWrapper = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: stretch;
 `;
 
 const Row = styled.div`
-  background-color: green;
+  display: flex;
+  font-family: "Montserrat", sans-serif;
+  align-items: center;
+  justify-content: left;
+  padding-left: 20px;
+  padding-right: 20px;
+  width: 100%;
+  height: 40px;
+  background-color: ${(props) => (props.diffColor ? "#24242b" : "#1b1b21")};
+  color: white;
 `;
-
-// const Row = styled.div`
-//   display: flex;
-//   font-family: "Montserrat", sans-serif;
-//   align-items: center;
-//   width: 100%;
-//   height: 40px;
-//   padding-left: 30px;
-//   background-color: ${(props) => (props.diffColor ? "#24242b" : "#1b1b21")};
-//   color: white;
-// `;
 
 const TitleRow = styled(Row)`
   justify-content: center;
