@@ -11,7 +11,7 @@ const Navbar = () => {
         </Link>
       </header>
       <Nav>
-        <Option to="/">Bitcoin</Option>
+        <Option to="/transactions">Transactions</Option>
         <Option to="/blocks">Blocks</Option>
         <Option to="/">Contact us</Option>
       </Nav>

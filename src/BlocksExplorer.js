@@ -81,6 +81,7 @@ const BlocksExplorer = () => {
       );
     }, 800);
   };
+
   const prepareOldBlocks = () => {
     setOldBlocks(
       blocksArray.map((block, index) => (
@@ -141,7 +142,7 @@ const BlocksExplorer = () => {
       ws.send(JSON.stringify(apiCallBlocks));
     };
 
-    ws.onmessage = function (event) {
+    ws.onmessage = (event) => {
       const json = JSON.parse(event.data);
       if (firstBlock) {
         prepareLastBlock(json);
