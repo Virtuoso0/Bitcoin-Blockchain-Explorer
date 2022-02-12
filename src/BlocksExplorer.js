@@ -218,6 +218,12 @@ const BlocksExplorer = () => {
   );
 };
 
+const Wrapper = styled.div`
+  height: 100%;
+  background-color: #0e0e11;
+  background-image: url(https://hatchet.com.au/art/backgrounds/background-happy-dark.svg);
+`;
+
 const BlockInfoSection = styled.section`
   display: flex;
   flex-direction: column;
@@ -249,10 +255,6 @@ const Row = styled.div`
   color: white;
 `;
 
-const Bold = styled.span`
-  font-weight: 700;
-`;
-
 const TitleRow = styled(Row)`
   justify-content: center;
   padding-top: auto;
@@ -265,10 +267,8 @@ const TitleRow = styled(Row)`
   background-color: #ad6834;
 `;
 
-const Wrapper = styled.div`
-  height: 100%;
-  background-color: #0e0e11;
-  background-image: url(https://hatchet.com.au/art/backgrounds/background-happy-dark.svg);
+const Bold = styled.span`
+  font-weight: 700;
 `;
 
 const BlocksSection = styled.section`
