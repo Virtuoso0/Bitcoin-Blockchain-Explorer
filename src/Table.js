@@ -1,35 +1,39 @@
 import styled from "styled-components";
 
-const Table = ({ contents }) => {
+const Table = ({ contents, title }) => {
   return (
     <Wrapper>
-      <TitleRow>Last Transactions</TitleRow>
+      <MainTitleRow>{title}</MainTitleRow>
       <ColumnWrapper>
         <Column width="22">
+          <TitleRow>Time</TitleRow>
           {contents.map((content, index) => (
-            <Row key={index}>
-              <Element>Time:{content.time}</Element>
+            <Row key={index} index={index}>
+              <Element>{content.time}</Element>
             </Row>
           ))}
         </Column>
-        <Column width="37">
+        <Column width="34">
+          <TitleRow>Amount</TitleRow>
           {contents.map((content, index) => (
-            <Row key={index}>
-              <Element>Amount:{content.amount}</Element>
-            </Row>
-          ))}
-        </Column>
-        <Column width="19">
-          {contents.map((content, index) => (
-            <Row key={index}>
-              <Element>Size:{content.size}</Element>
+            <Row key={index} index={index}>
+              <Element>{content.amount}</Element>
             </Row>
           ))}
         </Column>
         <Column width="22">
+          <TitleRow>Size</TitleRow>
           {contents.map((content, index) => (
-            <Row key={index}>
-              <Element>Fee:{content.fee}</Element>
+            <Row key={index} index={index}>
+              <Element>{content.size}</Element>
+            </Row>
+          ))}
+        </Column>
+        <Column width="22">
+          <TitleRow>Fee</TitleRow>
+          {contents.map((content, index) => (
+            <Row key={index} index={index}>
+              <Element>{content.fee}</Element>
             </Row>
           ))}
         </Column>
@@ -39,10 +43,12 @@ const Table = ({ contents }) => {
 };
 
 const Wrapper = styled.div`
-  width: 60%;
+  width: 70%;
+  min-height: 460px;
   margin: 40px;
   border: 2px solid #ad6834;
   border-radius: 4px;
+  background-color: #0e0e11;
 `;
 
 const Element = styled.div``;
@@ -69,13 +75,12 @@ const Row = styled.div`
   padding-right: 20px;
   width: 100%;
   height: 40px;
-  background-color: ${(props) => (props.diffColor ? "#24242b" : "#1b1b21")};
+  background-color: ${(props) => (props.index % 2 ? "#24242b" : "#1b1b21")};
   color: white;
 `;
 
-const TitleRow = styled(Row)`
+const MainTitleRow = styled(Row)`
   justify-content: center;
-  padding-top: auto;
   font-family: "Orbitron", sans-serif;
   font-size: 1.5rem;
   font-weight: 700;
@@ -83,6 +88,18 @@ const TitleRow = styled(Row)`
   padding: 0;
   height: 60px;
   background-color: #ad6834;
+`;
+
+const TitleRow = styled(Row)`
+  justify-content: left;
+  font-family: "Orbitron", sans-serif;
+  font-size: 1rem;
+  font-weight: 700;
+  letter-spacing: 1px;
+  padding-left: 20px;
+  padding-right: 20px;
+  height: 40px;
+  background-color: #0e0e11;
 `;
 
 export default Table;
