@@ -1,6 +1,11 @@
-# Getting Started with Create React App
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+# About the project
+
+**Bitcoin blockchain explorer** is a tool for viewing blocks on the bitcoin network. 
+
+![blocks](./example/blocks.png)
+
+![transactions](./example/transactions.png)
 
 ## Available Scripts
 
